@@ -1,0 +1,136 @@
+<div class="container1">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card mt-5" style="background: rgba(0, 0, 0, 0.459);">
+        <div class="card-body">
+          <div class="card-title text-center fs-5 mb-5 text-light">Add Person</div>
+          <form [formGroup]="form" (ngSubmit)="adminFormData()">
+
+            <div class="row">
+
+              <div class="col-lg-6 ">
+                <input type="text" formControlName="name" class="form-control mt-2" placeholder="Enter  Name" [ngClass]="{
+                    'is-invalid':
+                      !form.get('name')?.valid && form.get('name')?.touched,
+                    'is-valid':
+                      form.get('name')?.valid && form.get('name')?.touched
+                  }" />
+                <span class="invalid-feedback">Please enter name</span>
+                <span class="valid-feedback">Thank You!!!</span>
+              </div>
+
+              <div class="col-lg-6 ">
+                <input type="text" formControlName="country" class="form-control mt-2" placeholder="Enter  country"
+                  [ngClass]="{
+                    'is-invalid':
+                      !form.get('country')?.valid &&
+                      form.get('country')?.touched,
+                    'is-valid':
+                      form.get('country')?.valid &&
+                      form.get('country')?.touched
+                  }" />
+                <span class="invalid-feedback">Please enter country</span>
+                <span class="valid-feedback">Thank You!!!</span>
+              </div>
+
+            </div>
+
+
+            <div class="mt-2">
+              <small> Enter Email : </small>
+              <input type="email" formControlName="email" class="form-control " placeholder="Enter  email" [ngClass]="{
+                  'is-invalid':
+                    !form.get('email')?.valid &&
+                    form.get('email')?.touched,
+                  'is-valid':
+                    form.get('email')?.valid && form.get('email')?.touched
+                }" />
+              <span class="invalid-feedback">Please enter email</span>
+              <span class="valid-feedback">Thank You!!!</span>
+            </div>
+
+            <div class="mt-2">
+              <small> Enter Address :</small>
+              <input type="text" formControlName="address" class="form-control " placeholder="Enter Address" [ngClass]="{
+                  'is-invalid':
+                    !form.get('address')?.valid && form.get('address')?.touched,
+                  'is-valid':
+                    form.get('address')?.valid && form.get('address')?.touched
+                }" />
+              <span class="invalid-feedback">Please enter address</span>
+              <span class="valid-feedback">Thank You!!!</span>
+            </div>
+
+
+            <div class="mt-2">
+              <small> Enter DOB :</small>
+              <input type="date" formControlName="dob" class="form-control " placeholder="Upload profile Image"
+                [ngClass]="{
+                  'is-invalid':
+                    !form.get('dob')?.valid &&
+                    form.get('dob')?.touched,
+                  'is-valid':
+                    form.get('dob')?.valid &&
+                    form.get('dob')?.touched
+                }" />
+              <span class="invalid-feedback">Please enter DOB</span>
+              <span class="valid-feedback">Thank You!!!</span>
+            </div>
+
+
+
+            <div class="row mt-2">
+
+              <div class="col col-md-9">
+                <input type="file" class="form-control mt-3" (change)="pickImage($event)"
+                  placeholder="Upload Product Image" [ngClass]="{
+                    'is-invalid':
+                      !form.get('image')?.valid && form.get('image')?.touched,
+                    'is-valid':
+                      form.get('image')?.valid && form.get('image')?.touched
+                  }" />
+                <span class="invalid-feedback">Please upload product image</span>
+                <span class="valid-feedback">Thank You!!!</span>
+
+              </div>
+              <div class="col col-md-3 mt-2" style="height: 8vh; width: 8vw;">
+
+                <img [src]="myImage" alt="" class="h-100 rounded-circle" />
+              </div>
+
+            </div>
+
+            <button [disabled]="!form.valid" class="btn btn-outline-light w-100 mt-5">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8 offset-sm-2">
+      <div class="text-center mt-2" *ngIf="loading">
+        <div class="spinner-border text-warning"></div>
+      </div>
+      <table class="table table-bordered mt-5 text-light" *ngIf="!loading">
+        <thead>
+          <tr>
+            <th scope="col">Sr no.</th>
+            <th scope="col">NAME</th>
+            <th scope="col">Profile</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of people; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ item.name }}</td>
+
+            <td>
+              <img src="https://young-coast-90688.herokuapp.com/{{ item?.image }}" alt="" class="h-20 w-25" />
+            </td>
+            <td><button class="btn btn-none" (click)="deleteItem(item._id)"><span
+                  class="text-danger bi bi-trash"></span> </button> </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
