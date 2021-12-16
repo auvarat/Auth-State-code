@@ -1,0 +1,16 @@
+img{
+    max-height: 35vh;
+    background-size: cover;
+    position: center;
+}
+.container1{
+    min-height: 100vh;
+    /* background:linear-gradient(to bottom, rgba(0, 0, 0, 0.39), #40b191); */
+    padding: 40px; 
+
+}
+
+.card {
+    background: rgba(0, 0, 0, 0.459);
+    box-shadow: 5px 10px 40px rgba(44, 36, 36, 0.692);
+} 

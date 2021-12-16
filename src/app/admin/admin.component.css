@@ -1,0 +1,17 @@
+input{
+    background-color: rgb(187, 172, 172);
+}
+small{
+    color: whitesmoke;
+}
+
+.container1{
+    min-height: 100vh;
+    background:linear-gradient(to bottom, rgba(0, 0, 0, 0.39), #1c9371);
+    /* padding: 40px;  */
+
+}
+.card {
+
+    box-shadow: 5px 10px 40px rgba(128, 119, 119, 0.692);
+} 
